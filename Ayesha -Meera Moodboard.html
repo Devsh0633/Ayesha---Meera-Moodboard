@@ -319,52 +319,6 @@
     gap: 16px;
     margin-bottom: 16px;
   }
-  
-  /* ═══════════════ COLLAGE GRID ═══════════════ */
-  .collage-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 4px;
-    margin-bottom: 48px;
-    border-radius: 4px;
-    overflow: hidden;
-  }
-  .collage-grid .collage-item {
-    aspect-ratio: 1 / 1;
-    overflow: hidden;
-    position: relative;
-    background: var(--bg-card);
-  }
-  .collage-grid .collage-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  .collage-text-cell {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 16px;
-  }
-  .collage-text-cell.theme-1 { background: var(--maroon); color: #fff; }
-  .collage-text-cell.theme-2 { background: var(--saffron); color: #fff; }
-  .collage-text-cell.theme-3 { background: var(--peacock); color: #fff; }
-  
-  .collage-text-cell h3 {
-    font-size: 20px;
-    margin-bottom: 4px;
-    font-family: var(--font-serif);
-    line-height: 1.2;
-  }
-  .collage-text-cell p {
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    opacity: 0.8;
-  }
-
   .photo-card {
     position: relative;
     border-radius: 4px;
@@ -1931,70 +1885,8 @@
 
   <div class="gold-rule"></div>
 
-  <!-- ══════════════════════════════ SECTION 10 — COLLAGE MOODBOARDS ══════════════════════════════ -->
-  <div class="section-label">10 — Collage Moodboards</div>
-  <h2 class="section-title">Thematic <em>Instagram Grids</em></h2>
-  <div class="section-divider"></div>
-  <p style="margin-bottom: 48px; color: var(--text-light); line-height: 1.6;">Curated 3x3 grids for social media layout planning, combining locations, fabrics, and festival details into cohesive visual stories.</p>
-
-  <!-- Collage 1: Heritage -->
-  <div class="collage-grid">
-    <div class="collage-item"><img src="./photos/locations/gaitor_1.jpg" alt="Gaitore" onerror="this.style.display='none'"></div>
-    <div class="collage-item"><img src="./photos/locations/gaitor_2.jpg" alt="Gaitore" onerror="this.style.display='none'"></div>
-    <div class="collage-item"><img src="./photos/locations/chandra_mahal.jpg" alt="Chandra Mahal" onerror="this.style.display='none'"></div>
-    
-    <div class="collage-item"><img src="./photos/locations/mubarak_mahal.jpg" alt="Mubarak Mahal" onerror="this.style.display='none'"></div>
-    <div class="collage-item collage-text-cell theme-1">
-      <h3>Heritage<br>Moodboard</h3>
-      <p>Jaipur Grandeur</p>
-    </div>
-    <div class="collage-item"><img src="./photos/locations/panna_meena_1.jpg" alt="Panna Meena" onerror="this.style.display='none'"></div>
-    
-    <div class="collage-item"><img src="./photos/locations/panna_meena_2.jpg" alt="Panna Meena" onerror="this.style.display='none'"></div>
-    <div class="collage-item"><img src="./photos/locations/amber_fort_1.jpg" alt="Amber Fort" onerror="this.style.display='none'"></div>
-    <div class="collage-item"><img src="./photos/locations/amber_fort_2.jpg" alt="Amber Fort" onerror="this.style.display='none'"></div>
-  </div>
-
-  <!-- Collage 2: Golden Hour / Desert -->
-  <div class="collage-grid">
-    <div class="collage-item"><img src="./photos/locations/kishanbagh_1.jpg" alt="Kishanbagh" onerror="this.style.display='none'"></div>
-    <div class="collage-item"><img src="./photos/locations/kishanbagh_2.jpg" alt="Kishanbagh" onerror="this.style.display='none'"></div>
-    <div class="collage-item"><img src="./photos/locations/nahargarh_1.jpg" alt="Nahargarh" onerror="this.style.display='none'"></div>
-    
-    <div class="collage-item"><img src="./photos/locations/kishanbagh_3.jpg" alt="Kishanbagh" onerror="this.style.display='none'"></div>
-    <div class="collage-item collage-text-cell theme-2">
-      <h3>Golden Hour<br>Moodboard</h3>
-      <p>Desert & Earth</p>
-    </div>
-    <div class="collage-item"><img src="./photos/locations/nahargarh_2.jpg" alt="Nahargarh" onerror="this.style.display='none'"></div>
-    
-    <div class="collage-item"><img src="./photos/locations/nahargarh_3.jpg" alt="Nahargarh" onerror="this.style.display='none'"></div>
-    <div class="collage-item"><img src="./photos/locations/sisodia_rani_1.jpg" alt="Sisodia Rani" onerror="this.style.display='none'"></div>
-    <div class="collage-item"><img src="./photos/locations/sisodia_rani_2.jpg" alt="Sisodia Rani" onerror="this.style.display='none'"></div>
-  </div>
-
-  <!-- Collage 3: Festive / Craft -->
-  <div class="collage-grid">
-    <div class="collage-item"><img src="./photos/festival/teej_procession_1.jpg" alt="Teej Procession" onerror="this.style.display='none'"></div>
-    <div class="collage-item"><img src="./photos/fabrics/bandhani.jpg" alt="Bandhani" onerror="this.style.display='none'"></div>
-    <div class="collage-item"><img src="./photos/accessories/jewellery.jpg" alt="Jewellery" onerror="this.style.display='none'"></div>
-    
-    <div class="collage-item"><img src="./photos/fabrics/leheriya.jpg" alt="Leheriya" onerror="this.style.display='none'"></div>
-    <div class="collage-item collage-text-cell theme-3">
-      <h3>Festival<br>Moodboard</h3>
-      <p>Teej & Textiles</p>
-    </div>
-    <div class="collage-item"><img src="./photos/fabrics/gota_patti.jpg" alt="Gota Patti" onerror="this.style.display='none'"></div>
-    
-    <div class="collage-item"><img src="./photos/accessories/lac_bangles.jpg" alt="Lac Bangles" onerror="this.style.display='none'"></div>
-    <div class="collage-item"><img src="./photos/festival/puja_thali.jpg" alt="Puja Thali" onerror="this.style.display='none'"></div>
-    <div class="collage-item"><img src="./photos/accessories/gajra_1.jpg" alt="Gajra" onerror="this.style.display='none'"></div>
-  </div>
-
-  <div class="gold-rule"></div>
-
-  <!-- ══════════════════════════════ SECTION 11 — SHOT LIST ══════════════════════════════ -->
-  <div class="section-label">11 — Shot List</div>
+  <!-- ══════════════════════════════ SECTION 10 — SHOT LIST ══════════════════════════════ -->
+  <div class="section-label">10 — Shot List</div>
   <h2 class="section-title">15 Looks × <em>3 Models</em></h2>
   <div class="section-divider"></div>
 
@@ -2099,8 +1991,8 @@
 
   <div class="gold-rule"></div>
 
-  <!-- ══════════════════════════════ SECTION 12 — PROPS ══════════════════════════════ -->
-  <div class="section-label">12 — Props Required</div>
+  <!-- ══════════════════════════════ SECTION 11 — PROPS ══════════════════════════════ -->
+  <div class="section-label">11 — Props Required</div>
   <h2 class="section-title">On-Set <em>Essentials</em></h2>
   <div class="section-divider"></div>
 
@@ -2119,7 +2011,7 @@
 
   <div class="gold-rule"></div>
 
-  <!-- ══════════════════════════════ SECTION 13 — POST PROCESSING ══════════════════════════════ -->
+  <!-- ══════════════════════════════ SECTION 12 — POST PROCESSING ══════════════════════════════ -->
   <div class="section-label">12 — Post-Production Direction</div>
   <h2 class="section-title">The <em>Grade</em> & Edit Philosophy</h2>
   <div class="section-divider"></div>
@@ -2156,7 +2048,7 @@
 
   <div class="gold-rule"></div>
 
-  <!-- ══════════════════════════════ SECTION 14 — DELIVERABLES ══════════════════════════════ -->
+  <!-- ══════════════════════════════ SECTION 13 — DELIVERABLES ══════════════════════════════ -->
   <div class="section-label">13 — Deliverables</div>
   <h2 class="section-title">What We <em>Walk Away</em> With</h2>
   <div class="section-divider"></div>
