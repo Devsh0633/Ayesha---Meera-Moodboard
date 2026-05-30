@@ -183,6 +183,61 @@
     color: rgba(255,255,255,0.35);
   }
 
+  /* ═══════════════ PROGRESS SIDEBAR ═══════════════ */
+  .progress-sidebar {
+    position: fixed;
+    top: 50%;
+    left: max(32px, calc(50vw - 680px));
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    z-index: 100;
+  }
+  .progress-dot {
+    position: relative;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--border-strong);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .progress-dot.active {
+    background: var(--gold);
+    transform: scale(1.5);
+  }
+  .progress-dot:hover {
+    background: var(--gold-light);
+  }
+  .progress-label {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-dark);
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+  }
+  .progress-dot.active .progress-label,
+  .progress-dot:hover .progress-label {
+    opacity: 1;
+    left: 24px;
+  }
+  @media (max-width: 1300px) {
+    .progress-sidebar {
+      left: 24px;
+    }
+  }
+  @media (max-width: 1024px) {
+    .progress-sidebar { display: none; }
+  }
+
   /* ═══════════════ LAYOUT HELPERS ═══════════════ */
   .page {
     max-width: 1280px;
@@ -961,7 +1016,8 @@
   <div class="cover-footer">Meera's Plus Size Store · Jaipur · Sawan Collection</div>
 </section>
 
-<!-- ══════════════════════════════ SECTION 1 — BRIEF ══════════════════════════════ -->
+<!-- ══════════════════════════════ PAGE CONTENT ══════════════════════════════ -->
+<nav id="progress-sidebar" class="progress-sidebar"></nav>
 <div class="page">
   <div class="section-label">01 — Shoot Brief</div>
   <h2 class="section-title">The Brief at a <em>Glance</em></h2>
@@ -2140,6 +2196,63 @@
   </div>
 
 </div><!-- end .page -->
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const sidebar = document.getElementById("progress-sidebar");
+    const sectionLabels = Array.from(document.querySelectorAll(".section-label"));
+    
+    // Filter out nested or non-primary section labels if needed
+    const primarySections = sectionLabels.filter(label => !label.closest('.brief-card') && !label.textContent.includes('Note'));
+
+    // Create dots
+    primarySections.forEach((label, index) => {
+      // Add an ID to the label's parent or the label itself to scroll to
+      const sectionId = 'section-' + index;
+      label.id = sectionId;
+      
+      const dot = document.createElement("div");
+      dot.className = "progress-dot";
+      if (index === 0) dot.classList.add("active");
+      
+      const text = document.createElement("div");
+      text.className = "progress-label";
+      // Extract main text (remove numbers like "01 — ")
+      text.textContent = label.textContent.split('—').pop().trim();
+      
+      dot.appendChild(text);
+      
+      // Click to scroll
+      dot.addEventListener("click", () => {
+        label.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+      
+      sidebar.appendChild(dot);
+      
+      // Store reference to dot on the label for the observer
+      label.dataset.dotIndex = index;
+    });
+
+    // Intersection Observer to highlight current section
+    const dots = document.querySelectorAll(".progress-dot");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          dots.forEach(d => d.classList.remove("active"));
+          const index = entry.target.dataset.dotIndex;
+          if (dots[index]) {
+            dots[index].classList.add("active");
+          }
+        }
+      });
+    }, {
+      rootMargin: "-20% 0px -60% 0px", // Trigger when section is in top half of screen
+      threshold: 0
+    });
+
+    primarySections.forEach(section => observer.observe(section));
+  });
+</script>
 
 <!-- ══════════════════════════════ FOOTER ══════════════════════════════ -->
 <div class="footer">
